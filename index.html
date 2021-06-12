@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Akvaplan-niva's web palette" />
+    <meta
+      name="viewport"
+      content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=5"
+    />
+    <meta name="theme-color" content="red" />
+
+    <title>@akvaplan/reibo-palette</title>
+
+    <style>
+      @font-face {
+        font-family: "Panton Bold";
+        src: url("https://raw.githubusercontent.com/coderiver/zubza/master/src/fonts/Panton-Bold.woff2");
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Panton Regular";
+        src: url("https://raw.githubusercontent.com/coderiver/zubza/master/src/fonts/Panton-Regular.woff2");
+        font-display: swap;
+      }
+
+      :root {
+        --apn-black: 29, 27, 23;
+        --apn-white: 255, 255, 255;
+        --apn-blue: 21, 120, 158;
+        --apn-green: 16, 125, 140;
+        --apn-cyan: 46, 196, 255;
+        --apn-red: 215, 62, 15;
+        --apn-yellow: 254, 206, 6;
+
+        --apn-font: Panton Regular, sans-serif;
+        --apn-font-bold: Panton Bold, sans-serif;
+
+        --apn-primary-alpha: 1;
+        --apn-secondary-alpha: 1;
+
+        --apn-primary: rgba(var(--apn-green), var(--apn-primary-alpha, 1));
+        --apn-on-primary: rgb(var(--apn-white));
+        --apn-secondary: rgba(var(--apn-blue), var(--apn-secondary-alpha, 1));
+        --apn-on-secondary: rgb(var(--apn-white));
+        --apn-background: rgb(var(--apn-white));
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        color: rgb(var(--apn-black));
+        background: var(--apn-background);
+        font-family: var(--apn-font);
+        --mdc-theme-primary: var(--apn-primary);
+        --mdc-theme-secondary: var(--apn-secondary);
+        --mdc-theme-on-primary: var(--apn-on-primary);
+        --mdc-theme-on-secondary: var(--apn-on-secondary);
+
+        --mdc-typography-font-family: var(--apn-font);
+        --mdc-typography-headline1-font-family: var(--apn-font-bold);
+        --mdc-typography-headline2-font-family: var(--apn-font-bold);
+        --mdc-typography-headline6-font-family: var(--apn-font-bold);
+      }
+
+      html[dark] {
+        --apn-secondary: rgb(var(--apn-black), 0.9);
+        --apn-on-secondary: rgb(var(--apn-green));
+        background: rgba(var(--apn-black), 0.8);
+        color: rgba(var(--apn-white), 0.9);
+      }
+
+      mwc-top-app-bar-fixed {
+        --mdc-theme-primary: var(--apn-secondary);
+        --mdc-theme-on-primary: var(--apn-on-secondary);
+        --mdc-typography-headline6-font-family: var(--apn-font-bold);
+        --mdc-typography-headline6-font-size: 1.9rem;
+      }
+
+      header {
+        display: grid;
+        grid-template-columns: 64px 1fr 64px;
+        grid-template-rows: 64px;
+        grid-column-gap: 0;
+        margin-top: 0;
+        padding: 0;
+        background: var(--apn-secondary);
+        color: var(--apn-on-secondary);
+        font-family: var(--apn-font-bold);
+        white-space: nowrap;
+      }
+      header > * {
+        display: grid;
+        justify-content: center;
+        align-content: center;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 12px;
+        grid-column-gap: 8px;
+        font-size: 2rem;
+      }
+
+      li {
+        cursor: pointer;
+        margin: 0;
+        padding: 0.5rem;
+      }
+
+      footer {
+        background: var(--apn-on-primary);
+        color: var(--apn-primary);
+        font-size: 2rem;
+      }
+    </style>
+
+    <script type="module" src="demo.js"></script>
+  </head>
+  <body>
+    <header>
+      <span>left</span>
+      <h2>
+        akvaplan-niva
+      </h2>
+      <div>right</div>
+    </header>
+
+    <div>
+      <div>
+        <label for="font-size">Font size: <span>32</span> px</label>
+        <input
+          type="range"
+          id="font-size"
+          min="9"
+          max="128"
+          value="32"
+          step="1"
+        />
+
+        <label for="min-contrast">Minimum contrast: <span>4.5</span></label>
+        <input
+          type="range"
+          id="min-contrast"
+          min="1"
+          max="7"
+          value="4.5"
+          step="0.5"
+        />
+        <label for="color-scheme-icon">Light/Dark scheme: </label>
+        <span id="color-scheme-icon">☀️</span>
+      </div>
+      <main><ul></ul></main>
+
+      <footer class="kafka">
+        <header>
+          <div></div>
+          <h2>
+            Nothing more wonderfully beautiful can exist than the Arctic night
+          </h2>
+          <div></div>
+        </header>
+        <figure>
+          <blockquote
+            cite="https://www.gutenberg.org/files/30197/30197-h/30197-h.htm"
+          >
+            <p>
+              It is dreamland, painted in the imagination’s most delicate tints;
+              it is color etherealized. One shade melts into the other, so that
+              you cannot tell where one ends and the other begins, and yet they
+              are all there. No forms—it is all faint, dreamy color music, a
+              far-away, long-drawn-out melody on muted strings. Is not all
+              life’s beauty high, and delicate, and pure like this night? Give
+              it brighter colors, and it is no longer so beautiful.
+            </p>
+          </blockquote>
+          <figcaption>
+            – Fridtjof Nansen,
+
+            <cite
+              ><a
+                href="https://www.gutenberg.org/files/30197/30197-h/30197-h.htm#pb252"
+                >Farthest North</a
+              ></cite
+            >
+          </figcaption>
+        </figure>
+      </footer>
+    </div>
+  </body>
+</html>
