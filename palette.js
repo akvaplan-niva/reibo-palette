@@ -10,8 +10,7 @@ export const white = [255, 255, 255];
 export const blue = [21, 120, 158];
 export const green = [16, 125, 140];
 export const cyan = [46, 196, 255];
-export const red = rgbfromhex("cc1103"); // Material Red A 700 Dark – Reibo red (orangish): [227, 80, 48];
-export const yellow = [255, 206, 12];
+export const red = rgbfromhex("d73e0f"); // Material Red A 700 Dark: [227, 80, 48];export const yellow = [255, 206, 12];
 export const black = [35, 31, 32];
 
 // These are from injecting blue/green into https://material.io/resources/color,
@@ -38,15 +37,15 @@ export const variants = new Map([
   ["--apn-green-lighter", greenLighter],
 ]);
 
-export const light = new Map([
-  ["--apn-primary", green],
-  ["--apn-secondary", blue],
-]);
-
-export const dark = new Map([
-  ["--apn-primary", green],
-  ["--apn-secondary", blue],
-]);
+// export const light = new Map([
+//   ["--apn-primary", green],
+//   ["--apn-secondary", blue],
+// ]);
+//
+// export const dark = new Map([
+//   ["--apn-primary", green],
+//   ["--apn-secondary", blue],
+// ]);
 
 export const rgba = ([r, g, b, a], opacity = 1) =>
   `rgba(${[r, g, b, a ?? opacity ?? 1]})`;
