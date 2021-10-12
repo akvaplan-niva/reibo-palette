@@ -51,7 +51,7 @@ export const rgba = ([r, g, b, a], opacity = 1) =>
 
 export const rgb = (rgb) => rgba(rgb);
 
-const setCSSVariables = (el, map) => {
+export const setCSSVariables = (el, map) => {
   for (const [k, v] of map) {
     el.style.setProperty(k, v);
   }
