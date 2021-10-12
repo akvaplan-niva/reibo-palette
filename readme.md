@@ -35,7 +35,7 @@ setCSSVariables(el, variants);
 
 ### Use
 
-To use the `--apn` palette, pass the variables to CSS's [`rgb()`](<https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb/rgba()>) functional notation.
+To use the `--apn` palette, pass the variables to CSS's [`rgb()`](<https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb()>) functional notation.
 
 ```css
 a {
