@@ -17,23 +17,25 @@ Copy the `:root` block below into a head `<style>`:
   --apn-red: 215, 62, 15;
   --apn-yellow: 254, 206, 6;
   --apn-black: 29, 27, 23;
-  --apn-blue-lighter: 76, 127, 195;
   --apn-blue-darker: 0, 83, 159;
-  --apn-green-darker: 0, 80, 95;
   --apn-green-lighter: 0, 162, 178;
   --apn-blue-logo: 0, 73, 150;
   --apn-green-logo: 0, 149, 173;
 }
 ```
 
-Alternatively, inject the `--apn` palette variables via JavaScript:
+Alternatively, inject the `--apn` palette variables via JavaScript.
 
 ```js
-import { init } from "@akvaplan/reibo-palette";
-init(document.querySelector(":root"));
+import { setCSSVariables, palette, variants } from "@akvaplan/reibo-palette";
+const root = document.querySelector(":root");
+setCSSVariables(el, palette);
+setCSSVariables(el, variants);
 ```
 
 ### Use
+
+To use the `--apn` palette, pass the variables to CSS's [`rgb()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb/rgba) functional notation.
 
 ```css
 a {
