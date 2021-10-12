@@ -1,33 +1,21 @@
-import { palette, variants, rgba } from "./palette.js";
+import { palette, variants, rgba, init, hexfromrgb } from "./palette.js";
 import { contrast as calcContrast } from "./contrast.js";
 
 const opts = {
   minContrast: +document.querySelector("#min-contrast").value,
-  darkIcon: "🌒",
-  lightIcon: "☀️",
 };
-const { stringify } = JSON;
-const jsonEqual = (a, b) => stringify(a) === stringify(b);
+
 const render = ({
   main,
   document,
   minContrast = opts.minContrast,
-  colorScheme = document.querySelector(":root").hasAttribute("dark")
-    ? "dark"
-    : "light",
   colorOpacity = 1,
   backgroundOpacity = 1,
 } = {}) => {
-  if (colorScheme === "dark") {
-    document.querySelector(":root").setAttribute("dark", "");
-  } else {
-    document.querySelector(":root").removeAttribute("dark");
-  }
-
   while (main.firstChild) {
     main.removeChild(main.firstChild);
   }
-  const colors = new Map([...palette, ...variants]);
+  const colors = new Map([...palette /*, ...variants*/]);
   for (const [bgname, bgarr] of colors) {
     for (const [colorname, colorarr] of colors) {
       const contrast = calcContrast(colorarr, bgarr);
@@ -92,30 +80,15 @@ document.querySelector("#min-contrast").addEventListener(
   })
 );
 
-const colorSchemeToggleIcon = document.querySelector("#color-scheme-icon");
-
-colorSchemeToggleIcon.addEventListener("click", (e) => {
-  const root = document.querySelector(":root");
-  const next = root.hasAttribute("dark") ? "light" : "dark";
-  if (next === "dark") {
-    root.setAttribute("dark", "");
-  } else {
-    root.removeAttribute("dark");
+const logCssVarMap = (map) => {
+  let s = [":root {"];
+  for (const [k, v] of map) {
+    s.push(`  ${k}: ${v};`);
   }
-  e.currentTarget.textContent = colorSchemeIcon(next);
-});
+  s.push("}");
+  console.log(s.join("\n"));
+};
 
-const { darkIcon, lightIcon, minContrast } = opts;
-const colorSchemeIcon = (mode) => (mode === "dark" ? darkIcon : lightIcon);
-const darkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-darkScheme.addListener(({ matches }) => {
-  const colorScheme = matches === true ? "dark" : "light";
-  const icon = colorSchemeIcon(colorScheme);
-  document.querySelector("#color-scheme-icon").textContent = icon;
-  render({ main, colorScheme, document });
-  // todo change<meta name="theme-color"> that determines the color of the URL bar in Chrome
-});
-const colorScheme = darkScheme.matches ? "dark" : "light";
-colorSchemeToggleIcon.textContent = colorSchemeIcon(colorScheme);
-render({ main, minContrast, colorScheme, document });
+logCssVarMap([...palette, ...variants]);
+init(document.querySelector(":root"));
+render({ main, document, ...opts });

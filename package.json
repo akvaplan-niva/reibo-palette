@@ -1,6 +1,6 @@
 {
   "name": "@akvaplan/palette",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Conrad Helgeland",
   "license": "MIT",
   "dependencies": {},
@@ -9,7 +9,7 @@
     "build": "exit 0",
     "dev": "web-dev-server --app-index index.html --root-dir . --compatibility none --watch --port 8778 /"
   },
-  "_devDependencies": {
+  "devDependencies": {
     "@web/dev-server": "=0.1.17"
   }
 }
